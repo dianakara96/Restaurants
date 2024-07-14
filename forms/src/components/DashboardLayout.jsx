@@ -12,6 +12,8 @@ const DashboardLayout = ({ children }) => {
           <li><Link to="/dashboard/users">Users</Link></li>
           <li><Link to="/dashboard/hotels">Hotels</Link></li>
           <li><Link to="/dashboard/restaurant">Restaurants</Link></li>
+          <li><Link to="/dashboard/reservations">Reservations</Link></li>
+          <li><Link to="/dashboard/bookings">Bookings</Link></li>
 
         </ul>
       </aside>

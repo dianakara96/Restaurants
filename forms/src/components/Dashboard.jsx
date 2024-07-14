@@ -5,6 +5,8 @@ import DashboardLayout from './DashboardLayout';
 import UserList from './UserList';
 import HotelList from './HotelList';
 import RestaurantList from './RestaurantList';
+import ReservationtList from './ReservationList';
+import BookingList from './BookingList';
 
 
 const Dashboard = () => {
@@ -14,6 +16,8 @@ const Dashboard = () => {
         <Route path="users" element={<UserList />} />
         <Route path="hotels" element={<HotelList />} />
         <Route path="restaurant" element={<RestaurantList />} />
+        <Route path="reservations" element={<ReservationtList />} />
+        <Route path="bookings" element={<BookingList/>} />
 
       </Routes>
     </DashboardLayout>
