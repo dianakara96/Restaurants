@@ -26,8 +26,6 @@ export default function Footer() {
             <li><Link to="/Hotels">Hotels</Link></li>
             <li><Link to="/Restaurants">Restaurants</Link></li>
             <li><Link to="/Reservations">Reservations</Link></li>
-            <li><Link to="/event-party">Event & Party</Link></li>
-            <li><Link to="/gym-yoga">GYM & Yoga</Link></li>
           </ul>
         </div>
         <div className="footer-section">
@@ -40,4 +38,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

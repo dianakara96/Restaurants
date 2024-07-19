@@ -90,6 +90,9 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Reservations from './components/Reservations';
+import Review from './components/Review';
+import ContactForm from './components/ContactForm';
+
 
 
 function App() {
@@ -105,6 +108,9 @@ function App() {
         <Route path="/Restaurants" element={<Restaurants />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Reservations" element={<Reservations />} />
+        <Route path="/Review" element={<Review />} />
+        <Route path="/contact" element={<ContactForm />} />
+
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
