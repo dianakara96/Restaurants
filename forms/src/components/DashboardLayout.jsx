@@ -14,6 +14,8 @@ const DashboardLayout = ({ children }) => {
           <li><Link to="/dashboard/restaurant">Restaurants</Link></li>
           <li><Link to="/dashboard/reservations">Reservations</Link></li>
           <li><Link to="/dashboard/bookings">Bookings</Link></li>
+          <li><Link to="/dashboard/contact">Messages</Link></li>
+
 
         </ul>
       </aside>
@@ -25,3 +27,4 @@ const DashboardLayout = ({ children }) => {
 };
 
 export default DashboardLayout;
+

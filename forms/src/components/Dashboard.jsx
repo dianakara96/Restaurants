@@ -7,6 +7,7 @@ import HotelList from './HotelList';
 import RestaurantList from './RestaurantList';
 import ReservationtList from './ReservationList';
 import BookingList from './BookingList';
+import ContactFormList from './ContactFormList';
 
 
 const Dashboard = () => {
@@ -18,6 +19,7 @@ const Dashboard = () => {
         <Route path="restaurant" element={<RestaurantList />} />
         <Route path="reservations" element={<ReservationtList />} />
         <Route path="bookings" element={<BookingList/>} />
+        <Route path="contact" element={<ContactFormList/>} />
 
       </Routes>
     </DashboardLayout>
