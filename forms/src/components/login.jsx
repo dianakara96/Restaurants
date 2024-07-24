@@ -6,6 +6,7 @@
 // import user_icon from '../assets/person.png';
 // import email_icon from '../assets/email.png';
 // import password_icon from '../assets/password.png';
+// import { useNavigate } from 'react-router-dom';
 
 // axios.defaults.xsrfCookieName = 'csrftoken';
 // axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -26,6 +27,8 @@
 //     const [role, setRole] = useState('');
 //     const [message, setMessage] = useState('');
 //     const [loading, setLoading] = useState(false);
+
+//     const navigate = useNavigate();
 
 //     const handleSubmit = (e) => {
 //         e.preventDefault();
@@ -48,6 +51,8 @@
 //         try {
 //             const response = await client.post('/login/', { email, password });
 //             setMessage('Login successful!');
+//             // Redirect to About page on successful login
+//             navigate('/About');
 //         } catch (error) {
 //             setMessage('Login failed. Please check your credentials.');
 //         }
@@ -212,7 +217,6 @@
 // }
 
 // export default Login;
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import "../styles/login.css";
@@ -229,7 +233,7 @@ const client = axios.create({
   baseURL: "http://127.0.0.1:8000/api/"
 });
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
     const [action, setAction] = useState('Login');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -264,6 +268,7 @@ const Login = () => {
         try {
             const response = await client.post('/login/', { email, password });
             setMessage('Login successful!');
+            setIsLoggedIn(true); // Update isLoggedIn state
             // Redirect to About page on successful login
             navigate('/About');
         } catch (error) {
@@ -299,7 +304,7 @@ const Login = () => {
             {action === 'Forgot Password' ? (
                 <form onSubmit={handleSubmit} className='inputs'>
                     <div className='input'>
-                        <img src={email_icon} width="30" height="30" />
+                        <img src={email_icon} width="30" height="30" alt="email icon" />
                         <input
                             type="email"
                             placeholder='Email address'
@@ -309,7 +314,7 @@ const Login = () => {
                         />
                     </div>
                     <div className='input'>
-                        <img src={password_icon} width="30" height="30" />
+                        <img src={password_icon} width="30" height="30" alt="password icon" />
                         <input
                             type="password"
                             placeholder='New Password'
@@ -319,7 +324,7 @@ const Login = () => {
                         />
                     </div>
                     <div className='input'>
-                        <img src={password_icon} width="30" height="30" />
+                        <img src={password_icon} width="30" height="30" alt="password icon" />
                         <input
                             type="password"
                             placeholder='Confirm Password'
@@ -339,7 +344,7 @@ const Login = () => {
                     {action === 'Login' ? (
                         <>
                             <div className='input'>
-                                <img src={email_icon} width="30" height="30" />
+                                <img src={email_icon} width="30" height="30" alt="email icon" />
                                 <input
                                     type="email"
                                     placeholder='Email address'
@@ -349,7 +354,7 @@ const Login = () => {
                                 />
                             </div>
                             <div className='input'>
-                                <img src={password_icon} width="30" height="30" />
+                                <img src={password_icon} width="30" height="30" alt="password icon" />
                                 <input
                                     type="password"
                                     placeholder='Password'
@@ -362,7 +367,7 @@ const Login = () => {
                     ) : (
                         <>
                             <div className='input'>
-                                <img src={user_icon} width="30" height="30" />
+                                <img src={user_icon} width="30" height="30" alt="user icon" />
                                 <input
                                     type="text"
                                     placeholder='Username'
@@ -372,7 +377,7 @@ const Login = () => {
                                 />
                             </div>
                             <div className='input'>
-                                <img src={email_icon} width="30" height="30" />
+                                <img src={email_icon} width="30" height="30" alt="email icon" />
                                 <input
                                     type="email"
                                     placeholder='Email address'
@@ -382,7 +387,7 @@ const Login = () => {
                                 />
                             </div>
                             <div className='input'>
-                                <img src={password_icon} width="30" height="30" />
+                                <img src={password_icon} width="30" height="30" alt="password icon" />
                                 <input
                                     type="password"
                                     placeholder='Password'
@@ -392,7 +397,7 @@ const Login = () => {
                                 />
                             </div>
                             <div className='input'>
-                                <img src={user_icon} width="30" height="30" />
+                                <img src={user_icon} width="30" height="30" alt="role icon" />
                                 <input
                                     type="text"
                                     placeholder='Role'
@@ -430,4 +435,3 @@ const Login = () => {
 }
 
 export default Login;
-

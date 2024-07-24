@@ -77,7 +77,7 @@
 
 // src/App.js
 // src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/login';
 import Navbar from './components/Navbar';
@@ -96,13 +96,15 @@ import ContactForm from './components/ContactForm';
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Router>
-      <Navbar />
-      {/* <Carousel /> */}
+            <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            {/* <Carousel /> */}
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/About" element={<About />} />
+      <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+      <Route path="/About" element={<About />} />
         <Route path="/Booking" element={<Booking />} />
         <Route path="/Hotels" element={<Hotels />} />
         <Route path="/Restaurants" element={<Restaurants />} />
