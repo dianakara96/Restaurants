@@ -133,7 +133,7 @@ export default function ContactForm({ onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/contact/', formData);
+            const response = await axios.post('https://hotels-4-hgrb.onrender.com/api/contact/', formData);
             if (response.status === 200 || response.status === 201) {
                 setSuccessMessage('Thank you for contacting us!');
                 setTimeout(() => {

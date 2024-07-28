@@ -308,7 +308,7 @@ const Restaurants = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/restaurant/');
+        const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/restaurant/');
         setRestaurants(response.data);
       } catch (error) {
         if (error.response) {

@@ -11,7 +11,7 @@ const HotelList = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/hotels/');
+        const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/hotels/');
         setHotels(response.data);
       } catch (error) {
         setError(error);

@@ -104,7 +104,7 @@ const Review = ({ hotelId }) => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/reviews/', newReview);
+      const response = await axios.post('https://hotels-4-hgrb.onrender.com/api/reviews/', newReview);
       setReviews([...reviews, response.data]);
       setSuccessMessage('Review added successfully!');
       setFormData({ user: '', rating: '', comment: '' });

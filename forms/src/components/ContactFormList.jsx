@@ -13,7 +13,7 @@ export default function ContactFormList() {
     useEffect(() => {
         const fetchContactForms = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/contact/');
+                const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/contact/');
                 if (response.status === 200) {
                     setContactForms(response.data);
                     setFilteredForms(response.data);
