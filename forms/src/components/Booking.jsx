@@ -182,13 +182,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from './Carousel'; // Ensure this path is correct
+import BASE_URL from '../../config';
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
 const client = axios.create({
-  baseURL: "https://hotels-4-hgrb.onrender.com/api/"
+  baseURL: BASE_URL
 });
 
 const Booking = () => {
@@ -205,7 +207,7 @@ const Booking = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await client.get('/hotels/');
+        const response = await axios.get(`${BASE_URL}/api/hotels/`);
         setHotels(response.data);
       } catch (error) {
         console.error('Error fetching hotels:', error);
@@ -220,7 +222,7 @@ const Booking = () => {
     const fetchRooms = async () => {
       if (hotelId) {
         try {
-          const response = await client.get('/rooms/');
+          const response = await axios.get(`${BASE_URL}/api/rooms/`);
           console.log('Rooms fetched:', response.data); // Debugging log
           const filteredRooms = response.data.filter(room => room.hotel === parseInt(hotelId));
           setRooms(filteredRooms);
@@ -257,7 +259,8 @@ const Booking = () => {
     };
 
     try {
-      const response = await client.post('/bookings/', reservationData);
+      const response = await client.post(`${BASE_URL}/api/bookings/`, reservationData);
+
 
       if (response.status === 201 || response.status === 200) {
         setMessage('Reservation created successfully!');

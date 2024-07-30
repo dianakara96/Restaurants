@@ -224,13 +224,15 @@ import user_icon from '../assets/person.png';
 import email_icon from '../assets/email.png';
 import password_icon from '../assets/password.png';
 import { useNavigate } from 'react-router-dom';
+import BASE_URL from '../../config';
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
 const client = axios.create({
-  baseURL: "https://hotels-4-hgrb.onrender.com/api/"
+    baseURL: BASE_URL
 });
 
 const Login = ({ setIsLoggedIn }) => {
@@ -266,7 +268,7 @@ const Login = ({ setIsLoggedIn }) => {
 
     const handleLogin = async () => {
         try {
-            const response = await client.post('/login/', { email, password });
+            const response = await client.post(`${BASE_URL}/api/login/`, { email, password });
             setMessage('Login successful!');
             setIsLoggedIn(true); // Update isLoggedIn state
             // Redirect to About page on successful login
@@ -278,7 +280,7 @@ const Login = ({ setIsLoggedIn }) => {
 
     const handleSignUp = async () => {
         try {
-            const response = await client.post('/users/', { username: name, email, password, role });
+            const response = await client.post(`${BASE_URL}/api/users/`, { username: name, email, password, role });
             setMessage('Registration successful!');
         } catch (error) {
             setMessage('Registration failed. Please check your details.');
@@ -287,7 +289,7 @@ const Login = ({ setIsLoggedIn }) => {
 
     const handlePasswordReset = async () => {
         try {
-            const response = await client.post('/reset-password/', { email: resetEmail, newPassword, confirmPassword });
+            const response = await client.post(`${BASE_URL}/api/reset-password/`, { email: resetEmail, newPassword, confirmPassword });
             setMessage('Password reset request successful!');
         } catch (error) {
             setMessage('Password reset request failed.');

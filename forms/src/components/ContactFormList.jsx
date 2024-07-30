@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BASE_URL from '../../config';
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -13,7 +15,7 @@ export default function ContactFormList() {
     useEffect(() => {
         const fetchContactForms = async () => {
             try {
-                const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/contact/');
+                const response = await axios.get(`${BASE_URL}/api/contact/`);
                 if (response.status === 200) {
                     setContactForms(response.data);
                     setFilteredForms(response.data);

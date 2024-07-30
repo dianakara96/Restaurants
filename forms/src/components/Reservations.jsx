@@ -298,13 +298,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
+import BASE_URL from '../../config';
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
 const client = axios.create({
-  baseURL: "https://hotels-4-hgrb.onrender.com/api/"
+  baseURL: BASE_URL
 });
 
 const ReservationForm = () => {
@@ -320,7 +322,7 @@ const ReservationForm = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await client.get('/restaurant/');
+        const response = await axios.get(`${BASE_URL}/api/restaurant/`);
         setRestaurants(response.data);
       } catch (error) {
         console.error('Error fetching restaurants:', error);
@@ -345,7 +347,7 @@ const ReservationForm = () => {
     };
 
     try {
-      const response = await client.post('/reservations/', reservationData);
+      const response = await client.post(`${BASE_URL}/api/reservations/`, reservationData);
 
       if (response.status === 201 || response.status === 200) {
         setMessage('Reservation created successfully!');

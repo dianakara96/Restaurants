@@ -111,6 +111,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import BASE_URL from '../../config';
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -133,7 +135,7 @@ export default function ContactForm({ onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://hotels-4-hgrb.onrender.com/api/contact/', formData);
+            const response = await axios.post(`${BASE_URL}/api/contact/`, formData);
             if (response.status === 200 || response.status === 201) {
                 setSuccessMessage('Thank you for contacting us!');
                 setTimeout(() => {

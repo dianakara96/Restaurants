@@ -85,13 +85,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
+import BASE_URL from '../../config';
+
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
 const client = axios.create({
-  baseURL: "https://hotels-4-hgrb.onrender.com/api/"
+  baseURL: BASE_URL
 });
 
 const ReservationList = () => {
@@ -105,8 +107,8 @@ const ReservationList = () => {
     const fetchReservationsAndRestaurants = async () => {
       try {
         const [reservationsResponse, restaurantsResponse] = await Promise.all([
-          client.get('/reservations/'),
-          client.get('/restaurant/')
+          client.get(`${BASE_URL}/api/reservations/`),
+          client.get(`${BASE_URL}/api/restaurant/`)
         ]);
         
         const restaurantsMap = restaurantsResponse.data.reduce((acc, restaurant) => {

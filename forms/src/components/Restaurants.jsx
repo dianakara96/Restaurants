@@ -267,6 +267,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Carousel from './Carousel';
+import BASE_URL from '../../config';
+
 
 // Sample static images
 const staticImages = [
@@ -308,7 +310,7 @@ const Restaurants = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/restaurant/');
+        const response = await axios.get(`${BASE_URL}/api/restaurant/`);
         setRestaurants(response.data);
       } catch (error) {
         if (error.response) {

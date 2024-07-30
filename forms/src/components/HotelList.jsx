@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BASE_URL from '../../config';
+
 
 const HotelList = () => {
   const [hotels, setHotels] = useState([]);
@@ -11,7 +13,7 @@ const HotelList = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/hotels/');
+        const response = await axios.get(`${BASE_URL}/api/hotels/`);
         setHotels(response.data);
       } catch (error) {
         setError(error);

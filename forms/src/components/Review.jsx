@@ -61,6 +61,8 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BASE_URL from '../../config';
+
 
 const Review = ({ hotelId }) => {
   const [reviews, setReviews] = useState([]);
@@ -72,7 +74,7 @@ const Review = ({ hotelId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/reviews/?hotel=${hotelId}`);
+        const response = await axios.get(`${BASE_URL}/api/reviews/?hotel=${hotelId}`);
         setReviews(response.data);
       } catch (error) {
         if (error.response) {
@@ -104,7 +106,7 @@ const Review = ({ hotelId }) => {
     };
 
     try {
-      const response = await axios.post('https://hotels-4-hgrb.onrender.com/api/reviews/', newReview);
+      const response = await axios.post(`${BASE_URL}/api/reviews/`, newReview);
       setReviews([...reviews, response.data]);
       setSuccessMessage('Review added successfully!');
       setFormData({ user: '', rating: '', comment: '' });

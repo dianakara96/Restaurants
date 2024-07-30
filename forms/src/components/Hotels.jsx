@@ -220,6 +220,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Carousel from './Carousel';
 import Review from './Review'; // Import the Review component
+import BASE_URL from '../../config';
 
 // Sample static images and facilities
 const staticImages = [
@@ -250,8 +251,10 @@ const Hotels = () => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const response = await axios.get('https://hotels-4-hgrb.onrender.com/api/hotels/');
-        setHotels(response.data);
+        const response = await axios.get(`${BASE_URL}/api/hotels/`);
+         setHotels(response.data);       
+
+
       } catch (error) {
         if (error.response) {
           // Handle HTTP errors
